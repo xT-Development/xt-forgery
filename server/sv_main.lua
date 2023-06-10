@@ -11,15 +11,18 @@ RegisterNetEvent('xt-forgery:server:Forgery', function(TYPE, LOCID, INFO)
 
     local Price = Config.Forgery.Types[TYPE].Price
     local Item = Config.Forgery.Types[TYPE].Item
-
     if Player.Functions.RemoveMoney('cash', Price) then
         local ForgeryInfo = {}
-        ForgeryInfo.citizenid = Player.PlayerData.citizenid
+
         ForgeryInfo.firstname = INFO[1]
         ForgeryInfo.lastname = INFO[2]
         ForgeryInfo.nationality = INFO[3]
-        ForgeryInfo.dob = INFO[4]
-        if INFO[5] ~= nil then ForgeryInfo.extra = INFO[5] end
+        ForgeryInfo.dob = os.date("%x", (INFO[4] / 1000))
+        ForgeryInfo.description = 'Name: '..INFO[1]..' '..INFO[2]..'  \n'.. 'Nationality: '..INFO[3]..'  \n'.. 'Date of Birth: '..ForgeryInfo.dob
+        if INFO[5] ~= nil then
+            ForgeryInfo.extra = INFO[5]
+            ForgeryInfo.description = INFO[5]..'  \n'..ForgeryInfo.description
+        end
 
         if exports.ox_inventory:AddItem(src, Item, 1, ForgeryInfo) then
             QBCore.Functions.Notify(src, 'You received 1x '..TYPE..'!', 'success')
@@ -60,7 +63,6 @@ for x, t in pairs(Config.Forgery.Types) do
             local targetPed = GetPlayerPed(v)
             local dist = #(playerCoords - GetEntityCoords(targetPed))
             if dist < 3.0 then
-                item.metadata.dob = os.date("%x", (item.metadata.dob / 1000))
                 TriggerClientEvent('xt-forgery:client:ShowForgery', v, x, item.metadata)
             end
         end
