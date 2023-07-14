@@ -4,7 +4,7 @@
 # Features:
 - Create forged licenses
 - Add any license to the config
-- Add extra input options for eac license
+- Add extra input options for each license
 - Useable forged license items (shows info to players nearby)
 
 # Preview:
@@ -31,7 +31,7 @@
 	},
 
 	["forged_driverslicense"] = {
-		label = "ID Card",
+		label = "Drivers License",
 		weight = 0,
 		stack = false,
 		close = true,
@@ -42,7 +42,7 @@
 	},
 
 	["forged_weaponslicense"] = {
-		label = "weapons License",
+		label = "Weapons License",
 		weight = 0,
 		stack = false,
 		close = true,
