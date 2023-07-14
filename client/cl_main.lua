@@ -1,5 +1,4 @@
 local Player = QBCore.Functions.GetPlayerData()
-local PlayerGang = QBCore.Functions.GetPlayerData().gang
 local ForgeryZones = {}
 
 -- Setup --
@@ -34,7 +33,6 @@ end
 -- Player Load --
 local function playerLoaded()
     Player = QBCore.Functions.GetPlayerData()
-    PlayerGang = QBCore.Functions.GetPlayerData().gang
     CreateForgery()
 end
 
@@ -49,4 +47,3 @@ AddEventHandler('onResourceStart', function(resource) if resource == GetCurrentR
 AddEventHandler('onResourceStop', function(resource) if resource == GetCurrentResourceName() then playerUnload() end end)
 RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function() playerLoaded() end)
 RegisterNetEvent('QBCore:Client:OnPlayerUnload', function() playerUnload() end)
-RegisterNetEvent('QBCore:Client:OnGangUpdate', function(GangInfo) PlayerGang = GangInfo end)
