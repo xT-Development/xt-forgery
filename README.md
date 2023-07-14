@@ -8,7 +8,7 @@
 - Useable forged license items (shows info to players nearby)
 
 # Preview:
-https://www.youtube.com/watch?v=tlg6rMOwYqs
+[https://www.youtube.com/watch?v=tlg6rMOwYqs](https://www.youtube.com/watch?v=4ZazvLitm_o)
 
 # Dependencies:
 - qb-core
