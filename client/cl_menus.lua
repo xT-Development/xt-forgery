@@ -1,3 +1,5 @@
+local xT = require('modules.client')
+
 -- View Forgery Menu --
 RegisterNetEvent('xt-forgery:client:ForgeryMenu', function(LOCID)
     local ForgeryMenu = {}
@@ -29,17 +31,17 @@ RegisterNetEvent('xt-forgery:client:ForgeryMenu', function(LOCID)
                 if not ForgeryInput then TriggerEvent('xt-forgery:client:ForgeryMenu', LOCID) return end
 
                 local ForgeTime = (t.ForgeTime * 1000)
-                XTEmote('type3')
+                xT.Emote('type3')
                 QBCore.Functions.Progressbar('forgery', 'Forging a '..x, ForgeTime, false, true, {
                     disableMovement = true,
                     disableCarMovement = true,
                     disableMouse = false,
                     disableCombat = true,
                 }, {}, {}, {}, function()
-                    ClearPedTasks(cache.ped)
+                    xT.EndEmote()
                     TriggerServerEvent('xt-forgery:server:Forgery', x, LOCID, ForgeryInput)
                 end, function()
-                    ClearPedTasks(cache.ped)
+                    xT.EndEmote()
                     QBCore.Functions.Notify('Cancelled...', 'error')
                 end)
             end

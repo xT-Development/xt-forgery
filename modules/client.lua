@@ -1,18 +1,21 @@
--- Client Modules --
+local Utils = requir('modules.shared')
+local xTc = {}
 
 -- Play Emote --
-function XTEmote(emote)
-    if emote == nil then XTDebug('Play Emote Error', 'Emote is nil!') return end
+function xTc.Emote(emote)
+    if emote == nil then Utils.Debug('Play Emote Error', 'Emote is nil!') return end
     if not exports.scully_emotemenu:playEmoteByCommand(emote) then
         TriggerEvent('animations:client:EmoteCommandStart', {emote})
     end
-    XTDebug('Play Emote', emote)
+    Utils.Debug('Play Emote', emote)
 end
 
 -- End Emote --
-function XTEndEmote()
+function xTc.EndEmote()
     if not exports.scully_emotemenu:cancelEmote() then
         TriggerEvent('animations:client:EmoteCommandStart', {'c'})
     end
-    XTDebug('End Emote')
+    Utils.Debug('End Emote')
 end
+
+return xTc
