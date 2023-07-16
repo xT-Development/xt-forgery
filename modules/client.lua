@@ -1,6 +1,5 @@
-local Utils = requir('modules.shared')
+local Utils = require('modules.shared')
 local xTc = {}
-
 -- Play Emote --
 function xTc.Emote(emote)
     if emote == nil then Utils.Debug('Play Emote Error', 'Emote is nil!') return end

@@ -1,13 +1,6 @@
 -- Shared Modules --
 QBCore = exports['qb-core']:GetCoreObject()
 
--- Debug / Resource Print on Startup --
-AddEventHandler('onResourceStart', function(resource)
-    if resource == GetCurrentResourceName() then
-        XTDebug('xT Development', 'dsc.gg/xtdev ^7| '..resource)
-    end
-end)
-
 local Utils = {}
 
 -- Debug Print --
