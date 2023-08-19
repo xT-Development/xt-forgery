@@ -5,10 +5,11 @@ RegisterNetEvent('xt-forgery:client:ForgeryMenu', function(LOCID)
     local ForgeryMenu = {}
 
     for x, t in pairs(Config.Forgery.Types) do
+        local price = Config.Forgery.Types[x].Price
         ForgeryMenu[#ForgeryMenu+1] = {
             title = x,
             description = 'Forge a '..x,
-            icon = '',
+            metadata = {{label = 'Price', value = '$'..price }},
             onSelect = function()
                 local HasFunds = lib.callback.await('xt-forgery:server:HasFunds', false, x)
                 if not HasFunds then return end
